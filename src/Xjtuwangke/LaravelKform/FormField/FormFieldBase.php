@@ -342,6 +342,7 @@ class FormFieldBase {
         if( ! is_array( $rules ) ){
             $rules = explode( '|' , $rules );
         }
+        $this->rules = array();
         foreach( $rules as $rule ){
             if( strtolower( $rule ) == 'trim' ){
                 $this->validateFuncArray[] = function(){
