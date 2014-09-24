@@ -130,8 +130,8 @@ class FormFieldBase {
      */
     public function __construct( $name ){
         $this->name = $name;
-        $this->bindFunc = function( $item , $field ){
-            $name = $field->name;
+        $this->bindFunc = function( $item , $form , $field ){
+            $name = $field->name();
             $item->$name = $this->form->value( $name );
             return $item;
         };
