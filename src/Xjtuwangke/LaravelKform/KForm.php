@@ -32,6 +32,12 @@ class KForm {
     protected $fields = [];
 
     /**
+     * form的attributes
+     * @var array
+     */
+    protected $form_options = [];
+
+    /**
      * 表单尾部
      * @var string
      */
@@ -50,7 +56,7 @@ class KForm {
         else{
             $options['role'] = 'form';
         }
-        return Form::open( $options );
+        return \Form::open( $options );
     }
 
     public function __construct(){
@@ -60,6 +66,33 @@ class KForm {
     public function addField( FormFieldBase $field ){
         $this->fields[ $field->name() ] = $field;
         return $field;
+    }
+
+    public function setMethod( $method = 'POST' ){
+        $this->form_options['method'] = $method;
+        return $this;
+    }
+
+    public function setAction( $action = null ){
+        $this->form_options['action'] = $action;
+        return $this;
+    }
+
+    public function hide(){
+        if( isset( $this->form_options['style'] ) ){
+            $this->form_options['style'].= 'display:none;';
+        }
+        else{
+            $this->form_options['style'] = 'display:none;';
+        }
+        return $this;
+    }
+
+    public function removeField( $name ){
+        if( array_key_exists( $name , $this->fields ) ){
+            unset( $this->fields[ $name ] );
+        }
+        return $this;
     }
 
     public function field( $name ){
@@ -157,7 +190,7 @@ class KForm {
      * @return mixed
      */
     public function __toString(){
-        $form = static::open();
+        $form = static::open( $this->form_options );
         foreach( $this->fields as $field ){
             $form.= $field;
         }
