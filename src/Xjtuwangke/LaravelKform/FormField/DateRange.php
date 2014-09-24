@@ -6,7 +6,7 @@
  * Time: 05:13
  */
 
-namespace KForm\FormField;
+namespace Xjtuwangke\LaravelKform\FormField;
 
 
 class DateRange extends FormFieldBase{

@@ -6,7 +6,7 @@
  * Time: 03:48
  */
 
-namespace KForm;
+namespace Xjtuwangke\LaravelKform;
 
 use \Illuminate\Validation\Validator;
 use \Sms\SmServiceBase;

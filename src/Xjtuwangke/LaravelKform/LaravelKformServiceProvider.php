@@ -1,4 +1,6 @@
-<?php namespace Xjtuwangke\LaravelKform;
+<?php
+
+namespace Xjtuwangke\LaravelKform;
 
 use Illuminate\Support\ServiceProvider;
 

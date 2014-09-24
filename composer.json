@@ -18,8 +18,7 @@
             "src/migrations"
         ],
         "psr-0": {
-            "Xjtuwangke\\LaravelKform\\": "src/" ,
-            "Xjtuwangke\\KForm\\": "src/"
+            "Xjtuwangke\\LaravelKform\\": "src/"
         }
     },
     "minimum-stability": "stable"

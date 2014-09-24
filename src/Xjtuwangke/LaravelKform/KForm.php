@@ -6,11 +6,11 @@
  * Time: 02:23
  */
 
-namespace KForm;
+namespace Xjtuwangke\LaravelKform;
 
 use \Illuminate\Support\Facades\Form;
 use \Illuminate\Support\Facades\Input;
-use KForm\FormField\FormFieldBase;
+use Xjtuwangke\LaravelKform\FormField\FormFieldBase;
 
 
 /**

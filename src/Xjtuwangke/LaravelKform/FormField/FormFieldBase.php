@@ -6,10 +6,10 @@
  * Time: 02:25
  */
 
-namespace KForm\FormField;
+namespace Xjtuwangke\LaravelKform\FormField;
 
-use KForm\KForm;
-use KForm\KValidator;
+use Xjtuwangke\LaravelKform\KForm;
+use Xjtuwangke\LaravelKform\KValidator;
 use \Illuminate\Support\Facades\HTML;
 
 /**

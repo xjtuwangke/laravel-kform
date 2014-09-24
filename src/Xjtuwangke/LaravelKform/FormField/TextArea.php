@@ -6,7 +6,7 @@
  * Time: 04:55
  */
 
-namespace KForm\FormField;
+namespace Xjtuwangke\LaravelKform\FormField;
 
 
 class TextArea extends FormFieldBase{

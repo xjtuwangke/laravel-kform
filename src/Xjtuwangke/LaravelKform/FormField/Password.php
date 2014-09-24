@@ -6,7 +6,7 @@
  * Time: 03:09
  */
 
-namespace KForm\FormField;
+namespace Xjtuwangke\LaravelKform\FormField;
 
-class Text extends FormFieldBase{
+class Password extends FormFieldBase{
 } 
