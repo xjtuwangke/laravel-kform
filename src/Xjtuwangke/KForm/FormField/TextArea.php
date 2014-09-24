@@ -14,7 +14,7 @@ class TextArea extends FormFieldBase{
     /**
      * @var int textarea的rows
      */
-    public $rows = 3;
+    protected $rows = 3;
 
     /**
      * @param $rows
@@ -26,26 +26,9 @@ class TextArea extends FormFieldBase{
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function __toString(){
-        $name = $this->name();
-        $label = $this->label();
-        $value = $this->value();
-        $errors = $this->errors();
-        $readonly = $this->isReadonly()?'readonly':'';
-        $hidden = $this->isHide()?'display:none':'';
-        $rows   = $this->rows;
-        return <<<HTML
-<div class="form-group" style="{$hidden}">
-    <label for="{$name}" class="control-label col-sm-2">{$label}</label>
-    <div class="col-sm-6">
-        <textarea class="form-control" name="{$name}" rows="{$rows}" {$readonly}>{$value}</textarea>
-    </div>
-    <div class="col-sm-2 text-danger">
-        {$errors}
-    </div>
-</div>
-HTML;
+    public function rows(){
+        return $this->rows;
     }
 } 
