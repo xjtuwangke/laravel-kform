@@ -397,7 +397,7 @@ class FormFieldBase {
      */
     public function __toString(){
         $class_name = strtolower( get_class( $this ) );
-        return \lluminate\Support\Facades\View::make( 'laravel-kform::' . $class_name )->with( 'field' , $this );
+        return \Illuminate\Support\Facades\View::make( 'laravel-kform::' . $class_name )->with( 'field' , $this );
     }
 
     /**
