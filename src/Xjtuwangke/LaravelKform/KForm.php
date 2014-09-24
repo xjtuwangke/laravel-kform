@@ -189,10 +189,10 @@ class KForm {
      * draw a form
      * @return mixed
      */
-    public function __toString(){
+    public function render(){
         $form = static::open( $this->form_options );
         foreach( $this->fields as $field ){
-            $form.= $field;
+            $form.= $field->render();
         }
         $form.= $this->tail;
         return $form;
