@@ -197,4 +197,42 @@ class KForm {
         $form.= $this->tail;
         return $form;
     }
+
+    /**
+     * @param      $name
+     * @param null $func
+     * @return $this
+     */
+    public function setSaveFunc( $name , $func = null ){
+        $field = $this->field( $name );
+        if( $field ){
+            $field->setSaveFunc( $func );
+        }
+        return $this;
+    }
+
+    /**
+     * @param $name
+     * @param $rules
+     * @return $this
+     */
+    public function setRules( $name , $rules ){
+        $field = $this->field( $name );
+        if( $field ){
+            $field->setRules( $rules );
+        }
+        return $this;
+    }
+
+    /**
+     * @param $name
+     * @param $default
+     */
+    public function setDefault( $name , $default ){
+        $field = $this->field( $name );
+        if( $field ){
+            $field->setDefault( $default );
+        }
+        return $this;
+    }
 }

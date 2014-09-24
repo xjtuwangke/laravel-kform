@@ -26,7 +26,7 @@ class RadioGroup extends FormFieldBase{
      * 获取checkbox的 options
      * @return array
      */
-    public function  v(){
+    public function  options(){
         return $this->options;
     }
 

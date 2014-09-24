@@ -60,9 +60,9 @@ class FormFieldBase {
     protected $fixed = null;
 
     /**
-     * @var string 验证规则
+     * @var array 验证规则
      */
-    protected $rules = '';
+    protected $rules = array();
 
     /**
      * @var array 验证不通过的提示
@@ -94,7 +94,7 @@ class FormFieldBase {
     /**
      * @var callable 绑定存储数据的闭包
      */
-    protected $bindFuncArray = array();
+    protected $bindFunc = null;
 
     /**
      * @var array
@@ -246,7 +246,10 @@ class FormFieldBase {
      */
     public function setSaveFunc( $func ){
         if( is_callable( $func ) ){
-            $this->bindFuncArray[] = $func;
+            $this->bindFunc = $func;
+        }
+        else{
+            $this->bindFunc = null;
         }
         return $this;
     }
@@ -397,6 +400,8 @@ class FormFieldBase {
      */
     public function render(){
         $class_name = strtolower( get_class( $this ) );
+        $class_name = explode( "\\" , $class_name );
+        $class_name = array_pop( $class_name );
         return \Illuminate\Support\Facades\View::make( 'laravel-kform::' . $class_name )->with( 'field' , $this );
     }
 
