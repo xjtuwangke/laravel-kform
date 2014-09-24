@@ -19,6 +19,27 @@ use \Illuminate\Support\Facades\HTML;
  */
 class FormFieldBase {
 
+
+    /**
+     * 表单类型
+     */
+    const Type_Text = 1;
+    const Type_Password = 2;
+    const Type_TextArea = 3;
+    const Type_CheckGroup = 4;
+    const Type_RadioGroup = 5;
+    const Type_Select = 6;
+    const Type_MultiSelect = 7;
+    const Type_Image = 8;
+    const Type_MultiImage = 9;
+    const Type_Tags = 10;
+    const Type_Article = 11;
+    const Type_Date = 12;
+    const Type_SelectItem = 13;
+    const Type_DateTime = 14;
+    const Type_DateRange = 15;
+    const Type_Appendable = 16;
+
     /**
      * @var bool 是否隐藏
      */
@@ -124,6 +145,53 @@ class FormFieldBase {
         return new static( $fieldname );
     }
 
+
+    /**
+     * @param $fieldname
+     * @param $type
+     * @return static
+     */
+    final public static function createByType( $fieldname , $type ){
+        switch( $type ){
+            case static::Type_Text:
+                return Text::create( $fieldname );
+            case static::Type_Password:
+                return Password::create( $fieldname );
+            case static::Type_TextArea:
+                return TextArea::create( $fieldname );
+            case static::Type_CheckGroup:
+                return CheckGroup::create( $fieldname );
+            case static::Type_RadioGroup:
+                return RadioGroup::create( $fieldname );
+            case static::Type_Select:
+                return Select::create( $fieldname );
+            case static::Type_MultiSelect:
+                return MultiSelect::create( $fieldname );
+            case static::Type_Image:
+                return Image::create( $fieldname );
+            case static::Type_MultiImage:
+                return MultiImage::create( $fieldname );
+            case static::Type_Tags:
+                return Tags::create( $fieldname );
+            case static::Type_Article:
+                return Article::create( $fieldname );
+            case static::Type_Date:
+                return Date::create( $fieldname );
+            case static::Type_SelectItem:
+                return SelectItem::create( $fieldname );
+            case static::Type_DateTime:
+                return DateTime::create( $fieldname );
+            case static::Type_DateRange:
+                return DateRange::create( $fieldname );
+            case static::Type_Appendable:
+                return Appendable::create( $fieldname );
+        }
+    }
+
+    /**
+     * @param KForm $form
+     * @return $this
+     */
     public function belongsToForm( KForm $form ){
         $this->form = $form;
         return $this;

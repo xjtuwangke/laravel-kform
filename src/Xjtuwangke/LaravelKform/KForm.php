@@ -12,8 +12,10 @@ use \Illuminate\Support\Facades\Form;
 use \Illuminate\Support\Facades\Input;
 use Xjtuwangke\LaravelKform\FormField\FormFieldBase;
 
-
-
+/**
+ * Class KForm
+ * @package Xjtuwangke\LaravelKform
+ */
 class KForm {
 
     /**
@@ -56,6 +58,7 @@ class KForm {
 
     public function addField( FormFieldBase $field ){
         $this->fields[ $field->name() ] = $field;
+        $field->belongsToForm( $this );
         return $field;
     }
 
