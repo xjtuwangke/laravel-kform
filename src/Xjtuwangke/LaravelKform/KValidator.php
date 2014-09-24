@@ -8,14 +8,11 @@
 
 namespace Xjtuwangke\LaravelKform;
 
-use \Illuminate\Validation\Validator;
 use \Sms\SmServiceBase;
 
-class KValidator extends Validator{
+class KValidator extends \Illuminate\Validation\Validator{
 
     public function validateMobile( $attribute , $value , $parameters ){
         return SmServiceBase::isMobile( $value );
     }
-
-
 } 

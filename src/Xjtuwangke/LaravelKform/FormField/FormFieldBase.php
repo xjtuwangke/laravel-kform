@@ -338,7 +338,7 @@ class FormFieldBase {
         else{
             $input = [ $this->name => $this->value ];
         }
-        $validator = KValidator::make(
+        $validator = \Validator::make(
             $input ,
             [ $this->name => $this->rules ] ,
             $this->errorMessage

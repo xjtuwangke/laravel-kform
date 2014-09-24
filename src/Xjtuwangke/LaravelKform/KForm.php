@@ -13,16 +13,7 @@ use \Illuminate\Support\Facades\Input;
 use Xjtuwangke\LaravelKform\FormField\FormFieldBase;
 
 
-/**
- * Class KForm
- * @examples:
- * $loginForm->addField( 'login' , 'required' )->setLabel('请输入用户名')->setType(KFormField::Type_Text);
- * $loginForm->addField( 'password' , 'required' )->setLabel('请输入密码')->setType(KFormField::Type_Password);
- * $loginForm->addField( 'checkgroup' , 'required' )->setLabel('asdasd')->setOptions([ 'a' , 'b' , 'c'])->setType(KFormField::Type_CheckGroup);
- * $loginForm->addField( 'multiSelect' , 'required' )->setLabel('xxxx')->setOptions( [ 'a' , 'b' , 'c' , 1 ,2 ,3,4,5,6,7,8,9,0 ] )->setType(KFormField::Type_MultiSelect);
- * $loginForm->addField( 'uploadify' )->setLabel('单图上传')->setFileGroup('test')->setType(KFormField::Type_Image);
- * $loginForm->addField( 'multi-image' )->setLabel('多图上传')->setFileGroup('test2')->setType(KFormField::Type_MultiImage);
- */
+
 class KForm {
 
     /**
@@ -104,6 +95,11 @@ class KForm {
         }
     }
 
+    /**
+     * 验证
+     * @param null $input
+     * @return bool
+     */
     public function validate( $input = null ){
         if( is_null( $input ) ){
             $input = Input::all();
@@ -123,6 +119,20 @@ class KForm {
         return $pass;
     }
 
+    /**
+     * validate的别名
+     * @param null $input
+     * @return bool
+     */
+    public function validation( $input = null ){
+        return $this->validate( $input );
+    }
+
+    /**
+     * 得到某个表单域的值
+     * @param $name
+     * @return null
+     */
     public function value( $name ){
         if( $field = $this->field( $name ) ){
             return $field->value();
@@ -209,6 +219,18 @@ class KForm {
             $field->setSaveFunc( $func );
         }
         return $this;
+    }
+
+    /**
+     * 将formfield中的数据存入item
+     * @param $item
+     * @return mixed
+     */
+    public function save( $item ){
+        foreach( $this->fields as $field ){
+            $field->valueToModel( $item , $this );
+        }
+        return $item;
     }
 
     /**
