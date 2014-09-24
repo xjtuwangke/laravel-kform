@@ -252,11 +252,20 @@ class KForm {
     /**
      * @param $name
      * @param $default
+     * @return $this
      */
     public function setDefault( $name , $default ){
         $field = $this->field( $name );
         if( $field ){
             $field->setDefault( $default );
+        }
+        return $this;
+    }
+
+    public function set_error( $name , $error ){
+        $field = $this->field( $name );
+        if( $field ){
+            $field->pushError( $error );
         }
         return $this;
     }
