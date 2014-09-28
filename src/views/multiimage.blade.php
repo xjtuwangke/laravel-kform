@@ -1,5 +1,5 @@
 
-<div class="form-group">
+<div {{ $field->formgroup() }}>
     <label for="{{ $field->name() }}[]" class="control-label">{{ $field->label() }}</label>
     <div class="row">
         <div form-role="multi-image-upload" uploadify-image-type="{{{ $field->type() }}}" uploadify-swf-path="{{ \KUrl::asset( 'uploadify/uploadify.swf' , null , false ) }}" uploadify-upload-url="{{ \URL::action( 'admin.uploadify.image' ) }}" uploadify-field-name="{{ $field->name() }}[]">

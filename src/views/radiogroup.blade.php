@@ -1,5 +1,5 @@
 
-<div class="form-group">
+<div {{ $field->formgroup() }}>
     <label for="{{ $field->name() }}" class="control-label">
         {{ $field->label() }}
     </label>

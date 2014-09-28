@@ -10,7 +10,7 @@
  $_name = str_replace( '[' , '__' , $name );
  $_name = str_replace( ']' , '___' , $_name );
  ?>
- <div class="form-group">
+ <div {{ $field->formgroup() }}>
     <label for="{{ $_name }}" class="control-label">{{ $field->label() }}</label>
     <div class="row">
         <div form-role="image-upload" uploadify-image-type="{{{ $field->type() }}}" uploadify-swf-path="{{ \KUrl::asset( 'uploadify/uploadify.swf' , null , false ) }}" uploadify-upload-url="{{ \URL::action( 'admin.uploadify.image' ) }}">

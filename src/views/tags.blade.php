@@ -1,5 +1,5 @@
 
-<div class="form-group">
+<div {{ $field->formgroup() }}>
     <div class="row">
         <div class="col-sm-6 col-sm-offset-2 tags-span">
         @foreach( $field->value() as $tag )

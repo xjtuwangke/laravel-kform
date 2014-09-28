@@ -9,7 +9,7 @@
  $id         = $field->itemId();
  $modal_id = KRandom::getRandStr( 32 , 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' );
  ?>
- <div class="form-group">
+ <div {{ $field->formgroup() }}>
      <div class="row">
          <div class="col-sm-6 col-sm-offset-2 picked-item-span">
          {{ $controller::display_picked_up_item( $id , $field->name() ) }}
