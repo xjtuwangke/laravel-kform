@@ -66,6 +66,12 @@ class FormFieldBase {
     protected $form = null;
 
     /**
+     * 占据一行的半分比
+     * @var float
+     */
+    protected $col = 1.0;
+
+    /**
      * @var array 错误信息
      */
     protected $errors = array();
@@ -143,6 +149,22 @@ class FormFieldBase {
      */
     public static function create( $fieldname ){
         return new static( $fieldname );
+    }
+
+    /**
+     * $field->setRow(1)  占据一整行
+     * $field->setRow(0.5) 占据半行
+     * @param $col
+     * @return $this
+     */
+    public function setCol( $col ){
+        $this->col = $col;
+        return $this;
+    }
+
+    public function colClass(){
+        $col = ceil( $this->col / 12.0 );
+        return "col-md-{$col} col-lg-{$col}";
     }
 
 
@@ -271,6 +293,7 @@ class FormFieldBase {
         $hasError = $this->hasError()?'has-error':'';
         $options = $this->form_group;
         $options['class'].= ' '.$hasError;
+        $options['class'].= $this->colClass();
         $options['style'].= $hidden;
         return HTML::attributes( $options );
     }
