@@ -25,6 +25,14 @@ class KForm {
     protected $fields = [];
 
     /**
+     * 保存表单的rows
+     * @example:
+     *         $rows = array( ['fieldname1' , 'fieldname2'] , ['fieldname3'] );
+     * @var array
+     */
+    protected $rows = [];
+
+    /**
      * form的attributes
      * @var array
      */
@@ -53,13 +61,39 @@ class KForm {
     }
 
     public function __construct(){
-        $this->tail = $this->tail = '<button type="submit" class="btn btn-primary col-md-1 col-lg-1">确定</button>' . Form::close();
+        $this->tail = $this->tail = '<div class="row"><button type="submit" class="btn btn-primary">确定</button></div>' . Form::close();
     }
 
     public function addField( FormFieldBase $field ){
         $this->fields[ $field->name() ] = $field;
         $field->belongsToForm( $this );
         return $field;
+    }
+
+    /**
+     * 设置某一行的fields
+     * @param int   $number
+     * @param array $fields  field名
+     * @return $this
+     */
+    public function Row( $number , array $fields ){
+        $this->rows[ $number ] = $fields;
+        return $this;
+    }
+
+    public function newRow(){
+        $old = array();
+        foreach( $this->rows as $row ){
+            $old = array_merge( $old , $row );
+        }
+        $new = array();
+        foreach( $this->fields as $field_name => $field ){
+            if( !in_array( $field_name , $old ) ){
+                $new[] = $field_name;
+            }
+        }
+        $this->rows[] = $new;
+        return $this;
     }
 
     public function setMethod( $method = 'POST' ){
@@ -204,8 +238,28 @@ class KForm {
      */
     public function render(){
         $form = static::open( $this->form_options );
-        foreach( $this->fields as $field ){
-            $form.= $field->render();
+
+        $displayed = array();
+
+        foreach( $this->rows as $row ){
+            $form.= '<div class="row">';
+            foreach( $row as $field_name ){
+                $field = $this->field( $field_name );
+                if( $field ){
+                    $form.= $field->render();
+                    $displayed[] = $field_name;
+                }
+
+            }
+            $form.= '</div>';
+        }
+
+        foreach( $this->fields as $field_name => $field  ){
+            if( ! in_array( $field_name , $displayed ) ){
+                $form.= '<div class="row">';
+                $form.= $field->render();
+                $form.= '</div>';
+            }
         }
         $form.= $this->tail;
         return $form;
