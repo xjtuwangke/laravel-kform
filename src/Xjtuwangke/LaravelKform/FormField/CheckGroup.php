@@ -57,6 +57,19 @@ class CheckGroup extends FormFieldBase{
         return $this;
     }
 
+    /**
+     * @param $default array
+     * @return $this
+     */
+    public function setDefault( $default ){
+        parent::setDefault( $default );
+        $this->setChecked( $default );
+        return $this;
+    }
+
+    /**
+     * @return array|null
+     */
     public function value(){
         $value = parent::value();
         if( ! $value ){
