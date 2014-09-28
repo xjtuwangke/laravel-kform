@@ -1,7 +1,7 @@
 
 <div {{ $field->formgroup() }}>
     <div class="row">
-        <label for="" class="control-label col-lg-12 col-md-12">{{ $field->label() }}</label>
+        <label for="{{ $field->name() }}" class="control-label col-lg-12 col-md-12" style="text-align:left;">{{ $field->label() }}</label>
     </div>
     <div class="row">
         <div class="tags-span col-lg-12 col-md-12">
