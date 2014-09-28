@@ -3,9 +3,9 @@
     <label for="{{ $field->name() }}[]" class="control-label">
         {{ $field->label() }}
     </label>
-    <div class="col-md-12">
+    <div>
         @foreach( $field->options() as $key => $val )
-        <div class="checkbox col-md-3">
+        <div class="checkbox">
             <label>
             @if( in_array( $key , $field->checked()) )
             {{ Form::checkbox( $field->name() . '[]' , $key , true  ) . $val }}
@@ -16,7 +16,7 @@
         </div>
         @endforeach
     </div>
-    <div class="col-md-12 text-danger">
+    <div class="text-danger">
         {{ $field->errors() }}
     </div>
 </div>

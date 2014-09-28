@@ -53,7 +53,7 @@ class KForm {
     }
 
     public function __construct(){
-        $this->tail = Form::submit( '确定' ) . Form::close();
+        $this->tail = '<button type="submit" class="btn btn-primary col-lg-1 col-md-1">确定</button>' . Form::close();
     }
 
     public function addField( FormFieldBase $field ){

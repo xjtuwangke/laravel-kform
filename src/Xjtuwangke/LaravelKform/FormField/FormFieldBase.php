@@ -128,7 +128,7 @@ class FormFieldBase {
      */
     protected $form_group = array(
         'class' => 'form-group' ,
-        'style' => 'margin-top:10px;' ,
+        'style' => '' ,
     );
 
     /**

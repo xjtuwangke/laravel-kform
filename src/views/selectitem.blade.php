@@ -11,13 +11,13 @@
  ?>
  <div {{ $field->formgroup() }}>
      <div class="row">
-         <div class="col-sm-6 col-sm-offset-2 picked-item-span">
+         <div class="picked-item-span">
          {{ $controller::display_picked_up_item( $id , $field->name() ) }}
          </div>
      </div>
-     <label for="" class="control-label col-sm-2">{$options['label']}</label>
+     <label for="" class="control-label">{$options['label']}</label>
      <div style="margin-top:20px;">
-         <div class="col-lg-6">
+         <div>
              <div class="input-group">
                  <span class="input-group-btn">
                  <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#{$modal_id}" href="javascript:;">选择</a>

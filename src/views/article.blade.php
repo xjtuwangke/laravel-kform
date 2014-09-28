@@ -1,7 +1,7 @@
 
 <div {{ $field->formgroup() }}>
-    <label for="{{ $field->name() }}" class="control-label col-sm-2">{{ $field->label() }}</label>
-    <div class="col-sm-6">
+    <label for="{{ $field->name() }}" class="control-label">{{ $field->label() }}</label>
+    <div>
     <textarea form-data-role="wysiwyg" class="form-control" name="{{ $field->name() }}" rows="{{ $field->rows() }}">
     {{{ $field->value() }}}
     </textarea>
