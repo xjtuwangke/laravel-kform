@@ -163,7 +163,7 @@ class FormFieldBase {
     }
 
     public function colClass(){
-        $col = ceil( $this->col / 12.0 );
+        $col = ceil( $this->col * 12.0 );
         return "col-md-{$col} col-lg-{$col}";
     }
 
