@@ -1,10 +1,10 @@
 
 <div {{ $field->formgroup() }}>
     <div class="row">
-        <label for="" class="control-label">{{ $field->label() }}</label>
+        <label for="" class="control-label col-lg-12 col-md-12">{{ $field->label() }}</label>
     </div>
     <div class="row">
-        <div class="tags-span">
+        <div class="tags-span col-lg-12 col-md-12">
         @foreach( $field->value() as $tag )
             <span class="label label-info" style="display:inline-block;margin-right:5px;">{{{ $tag }}}<a href="javascript:;" form-role="tag-remove" style="margin-left:10px;">x</a>
                 <input style="display:none;" name="{{ $field->name() }}[]" value="{{{ $tag }}}">
