@@ -16,7 +16,7 @@
          </div>
      </div>
      <label for="" class="control-label">{{ $field->label() }}</label>
-     <div style="margin-top:10px;">
+     <div style="margin-top:20px;">
          <div>
              <div class="input-group">
                  <span class="input-group-btn">
