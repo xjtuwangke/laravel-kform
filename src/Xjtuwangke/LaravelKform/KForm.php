@@ -76,7 +76,7 @@ class KForm {
      * @param array $fields  field名
      * @return $this
      */
-    public function Row( $number , array $fields ){
+    public function setRow( $number , array $fields ){
         $this->rows[ $number ] = $fields;
         return $this;
     }
