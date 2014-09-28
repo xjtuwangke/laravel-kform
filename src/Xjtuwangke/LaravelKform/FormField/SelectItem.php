@@ -34,6 +34,16 @@ class SelectItem extends FormFieldBase{
     }
 
     /**
+     * @param $default
+     * @return $this
+     */
+    public function setDefault( $default ){
+        parent::setDefault( $default );
+        $this->setItemId( $default );
+        return $this;
+    }
+
+    /**
      * @param $id
      * @return $this
      */

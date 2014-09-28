@@ -3,14 +3,15 @@
     <label for="{{ $field->name() }}" class="control-label">
         {{ $field->label() }}
     </label>
-    <div >
+    <div class="row">
         @foreach( $field->options() as $key => $val )
-        <div class="checkbox">
+        <div class="checkbox col-md-3">
             <label>
-            @if( ! is_null( $field->selected() ) &&  $key === $field->selected() ) )
+            <?php Debugbar::debug( $field->selected() )?>
+            @if( ! is_null( $field->selected() ) &&  $key === $field->selected() )
             {{ Form::radio( $field->name() , $key , true  ) . $val }}
             @else
-            {{ Form::radio( $field->name() , $key , true  ) . $val }}
+            {{ Form::radio( $field->name() , $key , false  ) . $val }}
             @endif
             </label>
         </div>

@@ -53,7 +53,7 @@ class KForm {
     }
 
     public function __construct(){
-        $this->tail = '<button type="submit" class="btn btn-primary col-lg-1 col-md-1">确定</button>' . Form::close();
+        $this->tail = $this->tail = '<button type="submit" class="btn btn-primary col-md-1 col-lg-1">确定</button>' . Form::close();
     }
 
     public function addField( FormFieldBase $field ){
@@ -250,6 +250,32 @@ class KForm {
     }
 
     /**
+     * @param      $name
+     * @param bool $hide
+     * @return $this
+     */
+    public function setHide( $name , $hide = true ){
+        $field = $this->field( $name );
+        if( $field ){
+            $field->setHide( $hide );
+        }
+        return $this;
+    }
+
+    /**
+     * @param $name
+     * @param $fixed
+     * @return $this
+     */
+    public function setFixed( $name , $fixed ){
+        $field = $this->field( $name );
+        if( $field ){
+            $field->setFixed( $fixed );
+        }
+        return $this;
+    }
+
+    /**
      * @param $name
      * @param $default
      * @return $this
@@ -262,6 +288,24 @@ class KForm {
         return $this;
     }
 
+    /**
+     * @param $name
+     * @param $col
+     * @return $this
+     */
+    public function setCol( $name , $col ){
+        $field = $this->field( $name );
+        if( $field ){
+            $field->setCol( $col );
+        }
+        return $this;
+    }
+
+    /**
+     * @param $name
+     * @param $error
+     * @return $this
+     */
     public function set_error( $name , $error ){
         $field = $this->field( $name );
         if( $field ){

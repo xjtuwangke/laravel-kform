@@ -15,12 +15,12 @@
          {{ $controller::display_picked_up_item( $id , $field->name() ) }}
          </div>
      </div>
-     <label for="" class="control-label">{$options['label']}</label>
-     <div style="margin-top:20px;">
+     <label for="" class="control-label">{{ $field->label() }}</label>
+     <div style="margin-top:10px;">
          <div>
              <div class="input-group">
                  <span class="input-group-btn">
-                 <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#{$modal_id}" href="javascript:;">选择</a>
+                 <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#{{ $modal_id }}" href="javascript:;">选择</a>
                  </span>
              </div><!-- /input-group -->
          </div><!-- /.col-lg-6 -->

@@ -58,6 +58,15 @@ class CheckGroup extends FormFieldBase{
     }
 
     /**
+     * setChecked的别名
+     * @param $selected
+     * @return CheckGroup
+     */
+    public function setSelected( $selected ){
+        return $this->setChecked( $selected );
+    }
+
+    /**
      * @param $default array
      * @return $this
      */

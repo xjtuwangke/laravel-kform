@@ -31,6 +31,15 @@ class RadioGroup extends FormFieldBase{
     }
 
     /**
+     * @param $default
+     * @return $this
+     */
+    public function setDefault( $default ){
+        parent::setDefault( $default );
+        return $this->setSelected( $default );
+    }
+
+    /**
      * 获取checked
      * @return array
      */
