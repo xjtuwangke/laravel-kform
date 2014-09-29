@@ -240,18 +240,34 @@ class FormFieldBase {
      */
     public function label(){
         $label = $this->label;
-        if( in_array( 'email' , $this->rules ) ){
-            $label.= static::tooltip( '一个合法的邮箱' , 'envelope' );
+        $explain = array(); //exclamation-sign
+        foreach( $this->rules as $rule ){
+            if( ! is_string( $rule ) ){
+                continue;
+            }
+            if( 'email' === $rule ){
+                $label.= static::tooltip( '一个合法的邮箱' , 'envelope' );
+            }
+            elseif( 'required' === $rule ){
+                $label.= static::tooltip( '必填' , 'asterisk' );
+            }
+            elseif( 'mobile' === $rule ){
+                $label.= static::tooltip( '手机' , 'phone' );
+            }
+            elseif( 'numeric' === $rule ){
+                $explain[] = '数字';
+            }
+            elseif( 'integer' === $rule ){
+                $explain[] = '整数';
+            }
+            elseif( preg_match( '/^max\:(.*)$/i' , $rule , $matches ) ){
+                $explain[] = '小于' . $matches[1];
+            }
+            elseif( preg_match( '/^min\:(.*)$/i' , $rule , $matches ) ){
+                $explain[] = '大于' . $matches[1];
+            }
         }
-        if( in_array( 'required' , $this->rules ) ){
-            $label.= static::tooltip( '必填' , 'asterisk' );
-        }
-        if( in_array( 'mobile' , $this->rules) ){
-            $label.= static::tooltip( '手机' , 'phone' );
-        }
-        if( in_array( 'numeric' , $this->rules ) ){
-            $label.= static::tooltip( '数字' , 'exclamation-sign' );
-        }
+        $label.= static::tooltip( implode( ',' , $explain ) , 'exclamation-sign' );
         return $label;
     }
 
