@@ -7,7 +7,7 @@
  */
  $controller = $field->controllerClass();
  $id         = $field->itemId();
- $modal_id = KRandom::getRandStr( 32 , 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' );
+ $modal_id = Xjtuwangke\Random\KRandom::getRandStr( 32 , 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' );
  ?>
  <div {{ $field->formgroup() }}>
      <div class="row">
