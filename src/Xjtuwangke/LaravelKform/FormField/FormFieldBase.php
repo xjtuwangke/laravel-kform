@@ -267,7 +267,9 @@ class FormFieldBase {
                 $explain[] = '大于' . $matches[1];
             }
         }
-        $label.= static::tooltip( implode( ',' , $explain ) , 'exclamation-sign' );
+        if( ! empty( $explain ) ){
+            $label.= static::tooltip( implode( ',' , $explain ) , 'exclamation-sign' );
+        }
         return $label;
     }
 
