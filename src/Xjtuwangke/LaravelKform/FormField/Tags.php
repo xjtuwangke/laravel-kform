@@ -11,6 +11,8 @@ namespace Xjtuwangke\LaravelKform\FormField;
 
 class Tags extends FormFieldBase{
 
+    protected $suggestions = array();
+
     public function label(){
         return parent::label() . static::tooltip( '标签只能单个提交：输入一个点击一次【增加标签】' , 'exclamation-sign' );
     }
@@ -21,5 +23,14 @@ class Tags extends FormFieldBase{
             $value = array();
         }
         return $value;
+    }
+
+    public function setSuggestions( $suggestions ){
+        $this->setSuggestions = $suggestions;
+        return $this;
+    }
+
+    public function suggestions(){
+        return $this->suggestions;
     }
 } 
