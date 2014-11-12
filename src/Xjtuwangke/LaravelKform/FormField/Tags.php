@@ -26,7 +26,7 @@ class Tags extends FormFieldBase{
     }
 
     public function setSuggestions( $suggestions ){
-        $this->setSuggestions = $suggestions;
+        $this->suggestions = $suggestions;
         return $this;
     }
 
