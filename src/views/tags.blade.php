@@ -38,25 +38,20 @@
               border-radius: 8px;
       outline: none;
     }
-
     .typeahead {
       background-color: #fff;
     }
-
     .typeahead:focus {
       border: 2px solid #0097cf;
     }
-
     .tt-query {
       -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
          -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
               box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     }
-
     .tt-hint {
       color: #999
     }
-
     .tt-dropdown-menu {
       width: 422px;
       margin-top: 12px;
@@ -71,13 +66,11 @@
          -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
               box-shadow: 0 5px 10px rgba(0,0,0,.2);
     }
-
     .tt-suggestion {
       padding: 3px 20px;
       font-size: 18px;
       line-height: 24px;
     }
-
     .tt-suggestion.tt-cursor {
       color: #fff;
       background-color: #0097cf;
@@ -90,32 +83,27 @@
     </style>
     <script>
         $(function(){
-
-            var substringMatcher = function(strs) {
+            var substringMatcher = function(objects) {
               return function findMatches(q, cb) {
                 var matches, substrRegex;
-
                 // an array that will be populated with substring matches
                 matches = [];
-
                 // regex used to determine if a string contains the substring `q`
                 substrRegex = new RegExp(q, 'i');
-
                 // iterate through the pool of strings and for any string that
                 // contains the substring `q`, add it to the `matches` array
-                $.each(strs, function(i, str) {
-                  if (substrRegex.test(str)) {
+                $.each(objects, function(i, object) {
+                  if (substrRegex.test(object.name)) {
                     // the typeahead jQuery plugin expects suggestions to a
                     // JavaScript object, refer to typeahead docs for more info
-                    matches.push({ value: str });
+                    matches.push( object );
                   }
                 });
-
                 cb(matches);
               };
             };
 
-            var suggetstions = <?=json_encode( $field->suggestions() , JSON_UNESCAPED_UNICODE )?>;
+            var suggetsions = <?=json_encode( $field->suggestions() , JSON_UNESCAPED_UNICODE )?>;
 
             $('#<?=$id?>').typeahead({
               hint: true,
@@ -124,8 +112,11 @@
             },
             {
               name: 'states',
-              displayKey: 'value',
-              source: substringMatcher(suggetstions)
+              displayKey: 'name',
+              source: substringMatcher(suggetsions) ,
+              templates:{
+                suggestion: Handlebars.compile('<p><strong>@{{name}}</strong> – @{{count}}</p>')
+              }
             });
 
             $("#<?=$id?>").keypress( function( data , handler ){
