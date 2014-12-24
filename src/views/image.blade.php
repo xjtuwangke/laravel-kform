@@ -18,7 +18,7 @@
             <input hidden="hidden" class="hidden uploadify-input" name="{{ $field->name() }}" type="text" value="{{ $field->value() }}">
             <input id="_uploadify-image-{{ $_name }}" name="_uploadify" type="file">
             <a href="javascript:;" class="uploadify-remove-image"
-               onclick="$(this).parents('div.div-image-upload').childrren('img').attr('src' , '');$(this).parents('div.div-image-upload').childrren('.uploadify-input').attr('value' , '');">x</a>
+               onclick="$(this).parents('div.div-image-upload').children('img').attr('src' , '');$(this).parents('div.div-image-upload').children('.uploadify-input').attr('value' , 'no-image');">x</a>
         </div>
     </div>
      <div class="text-danger">
